@@ -6,7 +6,7 @@ function dataAnalyze() {
       // console.log(response.data.data);
       data = response.data.data;
       //  data1.push(response.data.data); 不可以寫這樣  會變成塞到同個陣列位置
-      console.log(data);
+      // console.log(data);
       //  console.log(data1);
       init();
       calData();
@@ -26,7 +26,7 @@ const regionSearch = document.querySelector('.regionSearch');
 const ticketRegion = document.querySelector('#ticketRegion');
 const btn = document.querySelector('.btn');
 const searchResultText = document.querySelector('#searchResult-text');
-btn.addEventListener('click', adddata)
+btn.addEventListener('click', addData)
 btn.addEventListener('click', calData)
 
 
@@ -121,7 +121,7 @@ function init() {
 
 
 
-function cleardata() {
+function clearData() {
   ticketName.value = "";
   ticketRegion.value = "";
   ticketDescription.value = "";
@@ -131,7 +131,7 @@ function cleardata() {
 }
 
 
-function adddata() {
+function addData() {
   let obj = {}
   obj.name = ticketName.value;
   obj.imgUrl = data[0].imgUrl;
@@ -140,10 +140,11 @@ function adddata() {
   obj.group = ticketNum.value;
   obj.price = ticketPrice.value;
   obj.rate = ticketRate.value;
+  obj.id=Date.now();
   // console.log(obj);
   data.push(obj);
   init();
-  cleardata();
+  clearData();
   regionSearch.value = "";
 }
 
@@ -167,7 +168,7 @@ regionSearch.addEventListener('change', function (e) {
       count+=1;
     }
   })
-  console.log(obj);
+  // console.log(obj);
   ticketCardArea.innerHTML = str;
   searchResultText.innerHTML = `本次搜尋共 ${count} 筆資料`;
 }
